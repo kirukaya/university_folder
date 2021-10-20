@@ -276,16 +276,52 @@ git push –all - отправляет изменения, сделанные в
 ![image](https://user-images.githubusercontent.com/70547060/138177571-4fca8002-b787-481f-a9c0-b1cd0cefdf7c.png)
    
 5. На локальной машине пишем скрипт ~/git/test/backup.sh, с произвольным содержанием
+
+![image](https://user-images.githubusercontent.com/70547060/138178112-b3a60d07-ab30-432a-9fa6-ab0ee14fe336.png)
+
 6. Фиксируем скрипт в репозитории (делаем коммит)
+
+![image](https://user-images.githubusercontent.com/70547060/138178190-176e977d-6cfd-4c48-b56c-a178960cfb91.png)   
+   
 7. Обновляем удаленный репозиторий репозиторий (делаем пуш)
+
+![image](https://user-images.githubusercontent.com/70547060/138178234-b0f6c97a-0f19-4329-87e3-2b818610c547.png)   
+
+![image](https://user-images.githubusercontent.com/70547060/138178284-24f6dc27-3221-425c-b807-a61831941c68.png)
+
 8. Через текстовый редактор добавить любую новую строку с комментарием
+
+![image](https://user-images.githubusercontent.com/70547060/138178739-b0d1a07d-d217-4e59-89cf-001294535dc2.png)
+
 9. Сделать коммит
-10. Вности синтаксическую ошибку в скрипт
+
+![image](https://user-images.githubusercontent.com/70547060/138178792-d8d60cb7-335e-4d1a-b1e8-649fbc90a93a.png)   
+   
+10. Внести синтаксическую ошибку в скрипт
+
+![image](https://user-images.githubusercontent.com/70547060/138178822-2f0b56d4-52ee-4725-9dc8-bc3ad8608142.png)  
+   
 11. Сделать коммит ошибочного скрипта
+
+![image](https://user-images.githubusercontent.com/70547060/138178865-49848bfb-2965-4413-b571-5d1d0e7e44fc.png)   
+  
 12. Откатываем до последней рабочей версии
+
+![image](https://user-images.githubusercontent.com/70547060/138178967-a77e07cb-3bcd-401a-8ef1-5dbb4960bbe9.png)   
+   
 13. Просмотреть историю коммитов
-15. Добавить несколько коммитов произвольного содержимого
-16. Создать пулл реквест в данный репозиторий
+
+![image](https://user-images.githubusercontent.com/70547060/138179044-f3ba4949-9196-4c74-89b1-2b2704ab66f2.png)
+   
+14. Добавить несколько коммитов произвольного содержимого
+
+![image](https://user-images.githubusercontent.com/70547060/138179177-8b76dc96-0cde-413d-a737-7cadeaff2e3c.png)
+
+![image](https://user-images.githubusercontent.com/70547060/138179200-84b76ea4-7862-4ead-ab02-f189d998125a.png)
+
+15. Создать пулл реквест в данный репозиторий
+
+![image](https://user-images.githubusercontent.com/70547060/138179399-f894f31b-aa25-4f84-ab5c-66475ac5cfbd.png)
 
 
 ### Контрольные вопросы

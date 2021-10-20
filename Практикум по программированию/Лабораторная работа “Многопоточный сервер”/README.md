@@ -25,6 +25,7 @@ Conversion notes:
 3. Модифицировать код сервера таким образом, чтобы при подключении нового клиента создавался новый поток и вся работа с клиентом выполнялась в нем.
 
 ![image](https://user-images.githubusercontent.com/70547060/138162029-87ce2759-c451-4ddd-96ab-6eb8e850cf04.png)
+
 ![image](https://user-images.githubusercontent.com/70547060/138162049-8a04381a-f1d5-4979-8835-e16cb221c99a.png)
 3. Проверить возможность подключения нескольких клиентов к этому серверу одновременно. 
 ![image](https://user-images.githubusercontent.com/70547060/138162158-f2abd2dc-6e3b-4a16-b57f-6b39c17dfbc2.png)

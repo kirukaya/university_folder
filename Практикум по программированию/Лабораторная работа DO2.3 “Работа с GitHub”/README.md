@@ -323,6 +323,7 @@ git push –all - отправляет изменения, сделанные в
 
 ![image](https://user-images.githubusercontent.com/70547060/138179399-f894f31b-aa25-4f84-ab5c-66475ac5cfbd.png)
 
+![image](https://user-images.githubusercontent.com/70547060/138179527-15936896-591a-4bc4-9cf2-2a6a59d49046.png)
 
 ### Контрольные вопросы
 

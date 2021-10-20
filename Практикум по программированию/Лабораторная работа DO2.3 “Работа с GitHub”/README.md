@@ -102,9 +102,22 @@ Conversion notes:
 ![image](https://user-images.githubusercontent.com/70547060/138171206-b9a21367-251b-4b3d-8ca7-a708af3c852c.png)
 
 5. Сделайте несколько коммитов во вновь созданную ветку.
+
+![image](https://user-images.githubusercontent.com/70547060/138171665-d1f2bd1c-ce40-40c4-b435-fe76ab723531.png)
+
 6. Перейдите в основную ветку и слейте в нее первую тематическую ветку.
+
+![image](https://user-images.githubusercontent.com/70547060/138171846-7e007601-1031-4915-a73a-71d74e173539.png)
+
 7. Слейте в основную ветку вторую тематическую. Если возникли конфликты слияния, разрешите их и завершите слияние. 
+
+![image](https://user-images.githubusercontent.com/70547060/138171856-2772546e-02cd-4498-bddc-f54d46174214.png)
+
 8. Удалите более не нужные тематические ветки. Обратите внимание в истории, что даже при удалении веток никакие коммиты не теряются.
+
+![image](https://user-images.githubusercontent.com/70547060/138172021-7cf0313f-dd78-4d90-b3fa-257e3ecee0db.png)
+
+![image](https://user-images.githubusercontent.com/70547060/138172055-f89faa0e-5b28-49fe-9b71-c69e04ac6746.png)
 
 
 ## 2. Работа с Git в терминале

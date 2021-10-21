@@ -159,11 +159,120 @@ Conversion notes:
 
 7. Реализовать сервер идентификации. Сервер должен принимать соединения от клиента и проверять, известен ли ему уже этот клиент (по IP-адресу). Если известен, то поприветствовать его по имени. Если неизвестен, то запросить у пользователя имя и записать его в файл. Файл хранить в произвольном формате.
 
+	Чтение данных из файла
+	```python
+	userinfo = {}
+		with open('clients.txt', 'r') as file:
+			for line in file.readlines():
+				userinfo = eval(line)
+	```
+	
+	Запись данных в файл
+	```python
+	userinfo[addr[0]] = data.decode()
+		with open('clients.txt', 'w') as file:
+			print(userinfo, file = file)
+	```
 
+	![image](https://user-images.githubusercontent.com/70547060/138339524-0bf00039-7f93-47eb-93ba-9f38a0b65517.png)
+
+	![image](https://user-images.githubusercontent.com/70547060/138339246-44f389c4-f520-4319-b844-2fa17315d5e7.png)
 
 8. Реализовать сервер аутентификации. Похоже на предыдущее задание, но вместе с именем пользователя сервер отслеживает и проверяет пароли. Дополнительные баллы за безопасное хранение паролей. Дополнительные баллы за поддержание сессии на основе токена наподобие cookies
 
+	Функция регистрации на сервере
+	```python
+	def s_register(conn, addr):
+		try:
+			conn.send(f'регистрация'.encode())
+			data = conn.recv(1024)
+			login = data.decode()
+			data = conn.recv(1024)
+			passw = data.decode()
 
+			# хеширование
+			salt = os.urandom(32)
+			key = hashlib.pbkdf2_hmac(
+				'sha256',
+				passw.encode('utf-8'),
+				salt,
+				100000
+			)
+
+			userinfo[addr[0]] = [login, salt+key]
+			conn.send('успешно'.encode())
+			with open('clients.txt', 'w') as file:
+				print(userinfo, file = file)
+		except:
+			conn.send('что-то пошло не так'.encode())
+	```
+	
+	Функция авторизации на сервере
+	```python
+	def s_login(conn, addr):
+		try:
+			conn.send(f'логин'.encode())
+			data = conn.recv(1024)
+			login = data.decode()
+			data = conn.recv(1024)
+			passw = data.decode()
+
+			# проверка пароля по ключу и хешу
+			new_key = hashlib.pbkdf2_hmac(
+				'sha256',
+				passw.encode('utf-8'),
+				userinfo[addr[0]][1][:32],
+				100000
+			)
+
+			if new_key == userinfo[addr[0]][1][32:] and login == userinfo[addr[0]][0]:
+				conn.send('успешно'.encode())
+			else:
+				conn.send('неправильные данные'.encode())
+		except:
+			conn.send('что-то пошло не так'.encode())
+	```
+	
+	Функция регистрации на клиенте
+	```python
+	def c_register():
+		print('Регистрация.')
+		login = input('Введите логин: ')
+		sock.send(login.encode())
+		passw = input('Введите пароль: ')
+		sock.send(passw.encode())
+		data = sock.recv(1024)
+		if 'успешно' in data.decode():
+			print('Успешная регистрация!')
+		else:
+			print('Что-то пошло не так.')
+	```
+	
+	Функция авторизации на клиенте
+	```python
+	def c_login():
+		print('Авторизация.')
+		login = input('Введите логин: ')
+		sock.send(login.encode())
+		passw = input('Введите пароль: ')
+		sock.send(passw.encode())
+		data = sock.recv(1024)
+		if 'успешно' in data.decode():
+			print('Успешная авторизация!')
+		else:
+			print('Неверные логин или пароль.')
+	```
+	
+	Пример хранения пароля
+	```python
+	{'192.168.1.2': ['zxc', b'\xfejn\x00V\xa2D\x9d\x86\xc0\xe8\xc5\xa4=K\x14\xa9\xa8\xb0\xabi\x9a=\x0b\x02\xcck\xe0\xd9l/l\x10\xec\x178G4h@/W\xfc@\xad\xcc(\xfc\xc0\xcb@\xb1\xbdN\xd9d\xa7\x89\xdfKq\xae\x7f5']}
+	```
+	
+	![image](https://user-images.githubusercontent.com/70547060/138340061-5d2cc2e0-d907-43ab-9ad6-10e6c6972ab2.png)
+
+	![image](https://user-images.githubusercontent.com/70547060/138340123-d498099b-a185-45ca-bad5-05c798810aee.png)
+
+	![image](https://user-images.githubusercontent.com/70547060/138340169-438004b7-367a-4545-a485-5aed157a132d.png)
 
 9. Напишите вспомогательные функции, которые реализуют отправку и принятие текстовых сообщений в сокет. Функция отправки должна дополнять сообщение заголовком фиксированной длины, в котором содержится информация о длине сообщения. Функция принятия должна читать сообщение с учетом заголовка. В дополнении реализуйте преобразование строки в байтовый массив и обратно в этих же функциях. Дополнително оценивается, если эти функции будут реализованы как унаследованное расширение класса socket библиотеки socket.
 
@@ -178,6 +287,6 @@ Conversion notes:
 
 #### Дополнительное задание 8 реализовано в папке "Сервер аутентификации".
 
-#### Дополнительные задания 9 - 10 реализованы в папке "Мини-чат с вспомогательными функциями".
+#### Дополнительные задания 9 - 10 реализованы в папке "Мини-чат со вспомогательными функциями".
 
 <!-- Docs to Markdown version 1.0β17 -->

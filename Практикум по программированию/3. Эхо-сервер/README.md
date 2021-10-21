@@ -276,9 +276,67 @@ Conversion notes:
 
 9. Напишите вспомогательные функции, которые реализуют отправку и принятие текстовых сообщений в сокет. Функция отправки должна дополнять сообщение заголовком фиксированной длины, в котором содержится информация о длине сообщения. Функция принятия должна читать сообщение с учетом заголовка. В дополнении реализуйте преобразование строки в байтовый массив и обратно в этих же функциях. Дополнително оценивается, если эти функции будут реализованы как унаследованное расширение класса socket библиотеки socket.
 
+	Вспомогательные функции сервера:
+	```python
+	def s_send(sock, data, service_data=''):
+		data = bytearray(f'{len(data)}$@$~{data}{service_data}'.encode())
+		sock.send(data)
 
+	def s_recv(sock):
+		data = sock.recv(1024).decode()
+		indx = data.find('$@$~')
+		atkn = re.search('\$token=(.{32,32})\$', data)
+		if atkn:
+			data = data[:atkn.start()]
+			atkn = atkn[1]
+		else:
+			atkn = ''
+		print('Recieved message length - {}'.format(data[:indx]))
+		return data[indx+4:], atkn
+	
+	socket.socket.s_send = s_send
+	socket.socket.s_recv = s_recv
+	```
+	
+	Вспомогательные функции клиента:
+	```python
+	def s_send(sock, data, token = ''):
+		data = bytearray(f'{len(data)}$@$~{data}$token={token}$'.encode())
+		sock.send(data)
 
+	def s_recv(sock):
+		data = sock.recv(1024).decode()
+		indx = data.find('$@$~')
+		pswd = data.rfind('$$$~')
+		answ = data.rfind('@$$~')
+		atkn = re.search('\$token=(.{32,32})\$', data)
+
+		print('Recieved message length - {}'.format(data[:indx]))
+
+		if pswd>-1:
+			return data[indx+4:pswd], 1
+
+		elif answ>-1:
+			return data[indx+4:answ], 2
+
+		elif atkn:
+			indx2 = atkn.start()
+
+			return (data[indx+4:indx2], atkn[1]), 3
+		else:
+			return data[indx+4:], 0
+	
+	socket.socket.s_send = s_send
+    socket.socket.s_recv = s_recv
+	```
+	
+	Функции сделаны унаследованным расширением класса socket библиотеки socket. Также присутствует преобразование строки в байтовый формат и наоборот. И, конечно же, длина сообщения.
+	
+	![image](https://user-images.githubusercontent.com/70547060/138348368-0286d806-9629-4bc8-83f4-cce0721869d0.png)
+	
 10. Дополните код клиента и сервера таким образом, чтобы они могли посылать друг другу множественные сообщения один в ответ на другое.
+
+	![image](https://user-images.githubusercontent.com/70547060/138348438-f196ef5b-164b-4f8e-b85f-f66e57a9f6ba.png)
 
 
 #### Дополнительные задания 3 - 6 реализованы в папке "Модифицированная версия эхо сервера". 

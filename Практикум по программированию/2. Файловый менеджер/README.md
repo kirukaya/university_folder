@@ -132,6 +132,3 @@
     ![image](https://user-images.githubusercontent.com/70547060/138309206-1906b0a0-c307-4ad8-89d9-a7c5e0b15413.png)
 
     ![image](https://user-images.githubusercontent.com/70547060/138309177-504e9797-cca5-46f9-b355-5c3e86ea6a1c.png)
-
-    b.	Квотирование дискового пространства и отображение занятого оставшегося места;
-

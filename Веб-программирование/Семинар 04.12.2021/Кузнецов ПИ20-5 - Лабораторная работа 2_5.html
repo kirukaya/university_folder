@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<script>
+var surname = prompt('введите фамилию: ')
+var len = surname.length
+var count = 0;
+for (var i = 0; i<=(~~(len/2)); i++){
+	if (surname.slice(i, i+1) == surname.slice(len-i-1, len-i)){
+		count = count + 1
+	}
+};
+if (count>=(~~(len/2))){
+	alert('палиндром')
+} else {
+	alert('не палиндром')
+}
+</script>

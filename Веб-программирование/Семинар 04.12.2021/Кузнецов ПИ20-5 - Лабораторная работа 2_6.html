@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<script>
+var num = prompt('ваш порядковый номер: ')
+for (var i = 1; i <= num; i++){
+	var count = 0;
+	for (var j = 1; j <= i; j++){
+		if (i%j == 0){
+			count +=1
+		}
+	};
+	if (count <= 2){
+		alert(i)
+	}
+}
+</script>

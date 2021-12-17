@@ -102,12 +102,39 @@ conn.close()
     3. Server
     4. Content-length
     5. Connection: close.
+
+![image](https://user-images.githubusercontent.com/70547060/146467917-d14113d2-f1c5-4c3d-a18f-531617e72e98.png)
+
 2. Создайте файл настроек вашего веб-сервера, в котором можно задать прослушиваемый порт, рабочую директорию, максимальный объем запроса в байтах. Можете добавить собственные настройки по желанию.
+
+![image](https://user-images.githubusercontent.com/70547060/146468005-daab6fee-affc-4a68-a07b-8e254b814940.png)
+
 3. Если файл не найден, сервер передает в сокет специальный код ошибки - 404.
+
+![image](https://user-images.githubusercontent.com/70547060/146468019-cbdefb96-434a-45d0-a09c-2f73caacba20.png)
+
 4. Сервер должен работать в многопоточном режиме.
+
+![image](https://user-images.githubusercontent.com/70547060/146468190-a7db4e9a-5efa-4e57-a010-3c381003a745.png)
+
 5. Сервер должен вести логи в следующем формате: Дата запроса. IP-адрес клиента, имя запрошенного файла, код ошибки.
+
+![image](https://user-images.githubusercontent.com/70547060/146468160-8b17d421-b6cb-49e6-83a2-1cc8e2cc4637.png)
+
 6. Добавьте возможность запрашивать только определенные типы файлов (.html, .css, .js и так далее). При запросе неразрешенного типа, верните ошибку 403.
+
+![image](https://user-images.githubusercontent.com/70547060/146468221-ae0180cc-af5a-4d87-b90d-924088cfd8b0.png)
+
+![image](https://user-images.githubusercontent.com/70547060/146468240-e70c7706-7380-4db3-80d9-ceeed6049d33.png)
+
+![image](https://user-images.githubusercontent.com/70547060/146468253-b0dbb15a-7680-405a-a689-b50811919c9a.png)
+
 7. Реализуйте поддержку постоянного соединения с несколькими запросами.
-8. Реализуйте поддержку бинарных типов данных, в частночти, картинок.
+
+![image](https://user-images.githubusercontent.com/70547060/146468353-d85a93d5-eaba-45d7-9b67-a22007ac4904.png)
+
+8. Реализуйте поддержку бинарных типов данных, в частности, картинок.
+
+![image](https://user-images.githubusercontent.com/70547060/146468372-20101925-c7d9-4825-a6bc-9193c0105b44.png)
 
 <!-- Docs to Markdown version 1.0β17 -->

@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+<script>
+	// 1
+	let user1 = {
+	  name: "Джон",
+	  age: 30
+	};
+	user1.sayHi = function() {
+	  alert("Привет!");
+	};
+	user1.sayHi(); 
+
+	// 2
+	let userInfo = {
+		name: "Вася",
+		surname: "Пупкин",
+		age: 20,
+		phoneNumber: '799xxxxxxxxx',
+		email: 'qweqwe123@wtfmail.com',
+	}
+	alert(userInfo.name +' '+ userInfo.age +' '+ userInfo.phoneNumber)
+	
+	// 3
+	let users2 = {
+		idList: [32994, 324939, 94392, 942394],
+		nameList: ['Вася', 'Петя', 'Юря', 'Миша'],
+		orderIdList: [1234, 1501, 5301, 505]
+	}
+	let orders = {
+		idList: [1234, 1501, 5301, 505]
+	}
+	let restoraunts = {
+		idList: [1, 2, 3, 4]
+	}
+	alert('Заказ номер '+orders.idList[0]+' покупателя с id '+users2.idList[0]+' в ресторане '+restoraunts.idList[0]+' готов. Примечание: '+users2.nameList[0])
+	
+	// 4
+	function User(name) {
+	  this.name = name;
+	  this.isAdmin = false
+	}
+
+	let user = new User("Вася");
+
+	alert(user.name); 
+	alert(user.isAdmin); 
+
+	// 5
+	function User(name) {
+	  this.name = name;
+
+	  this.sayHi = function() {
+		alert( "Меня зовут: " + this.name );
+	  };
+	}
+
+	let vasya = new User("Вася");
+
+	vasya.sayHi();
+
+</script>
